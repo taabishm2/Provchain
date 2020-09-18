@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippet.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("snackbar").load("snackbar.html");
+                $("spinner").load("spinner.html");
+            });
+        </script>
+
+        <title>Profile | ProvChain</title>
+
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <headerSnippet></headerSnippet>
+        <div id="loadingOverlay" style="display:none">
+            <div id="loader-text" style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px;">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">If prompted, please accept the transaction on Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+        <snackbar></snackbar>
+
+        <main>
+            <div>
+                <div class="row" style="width: 100%">
+                    <div class="col-md-4" style="word-wrap: break-word;">
+                        <div id="profile-holder-div">
+                            <span class="text-muted" style="font-size: 0.85em;">Viewing Profile of</span>
+                            <div id="welcome-header-div"><span id="userName"></span></div>
+                            <div id="welcome-eth-address-div"></div>
+                            <div class="table table-sm">
+                                <table id="profile-details-table-div">
+                                    <tr>
+                                        <th>Account Type:</th>
+                                        <td id="plaque-acc-type-div"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Account Name:</th>
+                                        <td id="plaque-acc-name-div"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email:</th>
+                                        <td id="plaque-acc-email-div"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact:</th>
+                                        <td id="plaque-acc-contact-div"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address:</th>
+                                        <td id="plaque-acc-address-div"></td>
+                                    </tr>
+                                </table>
+                                <div style="width: 100%;">
+                                    <iframe style="width:90%; height:230px; margin: auto; margin-top: 15px" id="gmap_canvas" src="https://maps.google.com/maps?q=naseem%20bagh&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="listing-body table table-striped table-hover">
+                            <table id="user-product-listing">
+                                <tr>
+                                    <th>EPC</th>
+                                    <th>Product Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Interacted On</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="text-muted text-center">No Entries</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="profile-searcher">
+                <button class="btn btn-primary ship-receive-button"
+                data-toggle="modal" data-target=".profile-search-modal">
+                    Lookup a Profile
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="modal fade bd-example-modal-lg profile-search-modal" tabindex="-1" role="dialog" aria-labelledby="Receive Product Form" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Search a Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-md-9 form-page" style="box-shadow: none; width: 90%; height: auto;">
+                        <div class="form form-custom" style="width: 100%; margin-bottom: 0px;">
+                            <form class="form" onsubmit="App.searchProfile(); return false;" id="profile-search-form">
+
+                                <label for="searchEthQuery">User ETH Address</label>
+                                <input class="form-control" name="searchEthQuery"
+                                id="searchEthQuery" placeholder="Enter User's Address" required type="text">
+                                <hr>
+
+                                <small class="text-muted">Users are identified by their ETH Account Address if they are registered.</small>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary modal-buttons" style="width: auto;" form="profile-search-form">
+                        Search
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary modal-buttons" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </main>
+
+        <footerSnippet></footerSnippet>
+        <script src="js/profile.js"></script>
+        
+    </body>
+</html>

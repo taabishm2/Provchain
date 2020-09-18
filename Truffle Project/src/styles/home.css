@@ -1,0 +1,154 @@
+#main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  height: 90vh;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+#profile-holder {
+  width: 45%;
+  padding: 20px;
+  padding-left: 40px;
+}
+
+#plaque-container {
+  width: 65vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 110vh;
+  background-color: #FFF0F5;
+}
+
+.plaque-row {
+  height: 25vh;
+  display: flex;
+  flex-direction: row;
+  width: 90%
+}
+
+.plaque-left, .plaque-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
+}
+
+.plaque-left:hover, .plaque-right:hover {
+  transform: scale(1.02);
+  background-color: #FFF3F7;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+}
+
+.plaque-fa {
+  font-size: 2em;
+  color: var(--theme-lighter-red);
+}
+
+.plaque-cell-title {
+  font-weight: bolder;
+  font-size: 1.1em;
+}
+
+.plaque-cell-text {
+  font-size: 0.85em;
+  padding: 0px 10px 0px 10px;
+  margin-top: 10px;
+}
+
+#welcome-header {
+  font-family: Montserrat;
+  font-weight: bolder;
+  font-size: 1.7em;
+  color: var(--theme-lighter-red);
+}
+
+#welcome-eth-address {
+  font-family: Consolas;
+  color: var(--theme-dark-red);
+  font-size: 0.9em;
+}
+
+#plaque-container-small {
+  padding-top:5rem;
+  display: none;
+}
+
+.sm-line-plaque {
+  border-radius: 5px;
+  background-color: #FFF0F5;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.console-info {
+  text-align: left;
+  font-size: 0.8em;
+  padding-top:60px;
+  padding-right: 10px;
+}
+
+#profile-details-table {
+  margin-top: 10px;
+}
+
+#profile-details-table th{
+  color: var(--theme-lighter-red);
+}
+
+@media (max-width: 888px) {
+  #plaque-container {
+    display: none;
+  }
+
+  #plaque-container-small {
+    display: block;
+    position: relative;
+    padding-top: 350px;
+  }
+
+  footer {margin-top: 300px}
+}
+
+@media (max-width: 660px) {
+  #main-container {
+    position: relative;
+    display: block;
+  }
+
+  #profile-holder {
+    text-align: center;
+    width: 90%;
+    padding: 20px;
+    padding-left: 40px;
+  }
+
+  #profile-holder, #profile-holder table, .console-info {
+    margin: auto;
+    text-align: center;
+  }
+
+  .console-info {
+    padding-top: 10px;
+  }
+
+  #plaque-container-small {
+    padding-top:0px;
+  }
+
+  footer {
+    position: relative;
+    margin-top: 750px;
+  }
+}

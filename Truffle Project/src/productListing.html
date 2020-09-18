@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippet.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("spinner").load("spinner.html");
+                $("snackbar").load("snackbar.html");
+            });
+        </script>
+
+        <title>Product Listing | ProvChain</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <headerSnippet></headerSnippet>
+
+        <div id="loadingOverlay" style="display:none">
+            <div style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">If prompted, please accept the transaction on Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+
+        <main>
+            <div id="listing-container">
+                <div class="listing-header-section">
+                    <div class="listing-header-head">
+                        <div id="listing-page-title">Product Listing</div>
+                        <div id="listing-page-description">View listing and details of all products you have interacted with along with their current status</div>
+                    </div>
+                    
+                </div>
+
+                <div class="listing-body table table-striped table-hover">
+                   
+                    <div class="row" style="margin: 0;">
+                        <div class="col-md-3 listing-table-selector"><a class="tableLinks" onclick="App.listenForProducedEvents(); return false;" href="#manufacturedByCollapse" data-toggle="collapse">Manufactured by You</a></div>
+                        <div class="col-md-3 listing-table-selector"><a class="tableLinks" onclick="App.listenForReceivedEvents(); return false;" href="#receivedByCollapse" data-toggle="collapse">Received by You</a></div>
+                        <div class="col-md-3 listing-table-selector"><a class="tableLinks" onclick="App.listenForShippedByEvents(); return false;" href="#shippedByCollapse" data-toggle="collapse">Shipped by You</a></div>
+                        <div class="col-md-3 listing-table-selector"><a class="tableLinks" onclick="App.listenForDestinedForEvents(); return false;" href="#destinedToCollapse" data-toggle="collapse">Destined For You</a></div>
+                    </div>
+                   
+                    <div id="manufacturedByCollapse" class="collapse in">
+                        <table id="manufacturedByTable">
+                            <tr>
+                                <tr><td colspan="7" class="table-heading-row">Manufactured By You</td></tr>
+                                <th>EPC</th>
+                                <th>Product Name</th>
+                                <th>Manufactured</th>
+                                <th>Expiration</th>
+                                <th>MRP</th>
+                                <th>Timestamp</th>
+                            </tr>
+                            <tr><td colspan="7" class="text-muted text-center">No Entries Yet</td></tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="listing-body table table-striped table-hover">
+                    <div id="receivedByCollapse" class="collapse in">
+                        <table id="receivedByTable">
+                            <tr>
+                                <tr><td colspan="7" class="table-heading-row">Received By You</td></tr>
+                                <th>EPC</th>
+                                <th>Product Name</th>
+                                <th>Manufacturer</th>
+                                <th>Received from</th>
+                                <th>Timestamp</th>
+                            </tr>
+                            <tr><td colspan="7" class="text-muted text-center">No Entries Yet</td></tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="listing-body table table-striped table-hover">
+                    <div id="shippedByCollapse" class="collapse in">
+                        <table id="shippedByTable">
+                            <tr>
+                                <tr><td colspan="7" class="table-heading-row">Shipped By You</td></tr>
+                                <th>EPC</th>
+                                <th>Product Name</th>
+                                <th>Manufacturer</th>
+                                <th>Destined To</th>
+                                <th>Timestamp</th>
+                            </tr>
+                            <tr><td colspan="7" class="text-muted text-center">No Entries Yet</td></tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="listing-body table table-striped table-hover">
+                    <div id="destinedToCollapse" class="collapse in">
+                        <table id="destinedForTable">
+                            <tr>
+                                <tr><td colspan="7" class="table-heading-row">Destined For You</td></tr>
+                                <th>EPC</th>
+                                <th>Product Name</th>
+                                <th>Manufacturer</th>
+                                <th>Shipped By</th>
+                                <th>Timestamp</th>
+                            </tr>
+                            <tr><td colspan="7" class="text-muted text-center">No Entries Yet</td></tr>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footerSnippet></footerSnippet>
+        <script src="js/productListing.js"></script>
+
+      </body>
+
+</html>

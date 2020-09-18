@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippetLoggedOut.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("snackbar").load("snackbar.html")
+            });
+        </script>
+
+        <title>ProvChain | Home</title>
+
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <headerSnippet></headerSnippet>
+        <div id="loadingOverlay" style="display:none">
+            <div id="loader-text" style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px;">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">You will be logged in based on your active Ethereum Account Address.<br/>Ensure the current account is selected in Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+        <snackbar></snackbar>
+
+        <main>
+            <div class="banner">
+                <div id="banner-left">
+                    <div id="banner-left-body">
+                        <div id="banner-title">ProvChain</div>
+                        <div id="banner-body">A Decentralized Supplychain Tracking and Provenance System to provide
+                            <span data-toggle="tooltip" class="popover-info-text" title="Assessment of aspects linked to the place of origin of
+                            brands and products i.e. where the product is manufactured (country & location of manufacture)">Origin</span>,
+                            <span data-toggle="tooltip" class="popover-info-text" title="Discerning between true authenticity and staged or fake authenticity
+                            seen in counterfieted products">Authenticity</span>,
+                            <span data-toggle="tooltip" class="popover-info-text" title="Trackability of products through the different stages of
+                            the supply chain to ensure higher levels of control and confidence">Custody</span> and
+                            <span data-toggle="tooltip" class="popover-info-text" title="Verification of information concerning products by providing visibility of all supply
+                            chain transactions">Integrity</span> Assurances using minimal requirements
+                        </div>
+                        <div id="banner-register" class="form-group">
+                            <form>
+                                <div id="banner-form-input-div">
+                                    <input type="email" class="form-control" id="banner-email-ip" name="banner-email-ip" placeholder="Enter email" aria-describedby="emailHelp">
+                                    <small id="emailHelp" class="form-text text-muted">Enter your email address to get started</small>
+                                </div>
+                                <a href="register.html">
+                                    <button class="btn btn-primary" type="button" id="banner-submit-btn">Get Started</button>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="banner-right">
+                    <img src="assets/barcode.png" class="banner-image">
+                </div>
+            </div>
+            <!--<button onclick="App.checkIfAdmin(); return false;">Admin</button>-->
+        </main>
+
+        <footerSnippet></footerSnippet>
+        <script src="js/index.js"></script>
+
+      </body>
+
+</html>

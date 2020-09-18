@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippet.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("spinner").load("spinner.html");
+                $("snackbar").load("snackbar.html");
+            });
+        </script>
+
+        <title>Register | ProvChain</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <headerSnippet></headerSnippet>
+        <snackbar></snackbar>
+
+        <div id="loadingOverlay" style="display:none">
+            <div style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">If prompted, please accept the transaction on Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+
+        <main>
+            <div>
+                <div class="row form-row">
+                    <div class="col-md-3 form-gutter">
+                        <div class="form-gutter-heading">Register User Account</div>
+                        <div class="form-gutter-text">
+                            Registration is required for access to Provchain's features.<br/>
+                            <hr/>
+                            &nbspNot a Manufacturer?
+                            <a href="register.html">
+                                <button class="btn btn-info">Register Account</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 form-page">
+                        <div class="form form-custom">
+                            <form class="form" onsubmit="App.registerManufacturer(); return false;" id="user-register-form">
+
+                                <label for="accountType">Account Type</label>
+                                <select required class="form-control" id="accountType" name="accountType" disabled="">
+                                    <option hidden selected value="" disabled>Manufacturer</option>
+                                </select>
+
+                                <label for="manufacturerEthAddress">ETH Address</label>
+                                <input class="form-control" name="manufacturerEthAddress" 
+                                id="manufacturerEthAddress" placeholder="Enter Manufacturer's ETH Address" required type="text"
+                                pattern = "^0x[a-fA-F0-9]{40}$">
+
+                                <label for="manufacturerName">Account Name</label>
+                                <input class="form-control" name="manufacturerName"
+                                id="manufacturerName" placeholder="Enter a Name For the Account" required type="text" title="Must be Text only">
+
+                                <label for="manufacturerEpcPrefix">EPC Prefix</label><br/>
+                                <input type="text" pattern="[0-9]*" id="manufacturerEpcPrefix" name="manufacturerEpcPrefix" placeholder="Enter EPC Prefix" required class="form-control" title="Enter a valid Number">
+
+                                <label for="manufacturerAddress">Address</label><br/>
+                                <input type="text" id="manufacturerAddress" name="manufacturerAddress" required class="form-control" placeholder="Enter Manufacturer Address">
+
+                                <label for="manufacturerContactNumber">Contact</label><br/>
+                                <input type="text" pattern="[0-9]*" id="manufacturerContactNumber" name="manufacturerContactNumber" placeholder="Enter a Contact Number" required class="form-control" title="Enter a valid Number">
+
+                                <label for="manufacturerEmail">Email</label><br/>
+                                <input type="email" id="manufacturerEmail" name="manufacturerEmail" placeholder="Enter an Email Address" required class="form-control">
+
+                                <hr>
+                                <div>
+                                    <button type="submit" class="btn btn-outline-primary">Register</button>
+                                </div>
+                                <small class="text-muted">Details once registerd on the Blockchain are immutable. Ensure all fields are correct</small>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footerSnippet></footerSnippet>
+        <script src="js/registerManufacturer.js"></script>
+
+      </body>
+
+</html>

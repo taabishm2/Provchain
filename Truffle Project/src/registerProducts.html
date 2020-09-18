@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippet.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("spinner").load("spinner.html");
+                $("snackbar").load("snackbar.html");
+            });
+        </script>
+
+        <title>Register Product | Provchain</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <headerSnippet></headerSnippet>
+        <snackbar></snackbar>
+
+        <div id="loadingOverlay" style="display:none">
+            <div id="loadingOverlayInner" style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">If prompted, please accept the transaction on Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+
+        <main>
+            <div>
+                <div class="row form-row">
+                    <div class="col-md-3 form-gutter">
+                        <div class="form-gutter-heading">Register Product</div>
+                        <div class="form-gutter-text">
+                            Register a new Product under a Manufacturer Account on your deployed Supplychain.
+                        </div>
+                    </div>
+                    <div class="col-md-9 form-page">
+                        <div class="form form-custom">
+                            <form class="form" onsubmit="App.registerProduct(); return false;" id="product-register-form">
+
+                                <label for="epc">Product EPC</label>
+                                <input class="form-control" name="epc"
+                                id="epc" placeholder="Enter Product EPC" required pattern="[0-9]*" title="Must be Numeric">
+
+                                <label for="productName">Product Name</label>
+                                <input class="form-control" name="productName"
+                                id="productName" placeholder="Enter a Name For Your Product" required type="text" title="Must be Text only">
+
+                                <label for="manufactureDate">Manufacture Date</label><br/>
+                                <input type="date" id="manufactureDate" name="manufactureDate" required class="form-control">
+
+                                <label for="expirationDate">Expiration Date</label><br/>
+                                <input type="date" id="expirationDate" name="expirationDate" required class="form-control">
+
+                                <label for="productMrp">MRP</label>
+                                <input class="form-control" name="productMrp"
+                                id="productMrp" placeholder="Enter Product MRP" required type="number" min="1" step="any" title="Enter a valid MRP">
+
+                                <label for="productUrl">Product Website</label>
+                                <input class="form-control" name="productUrl"
+                                id="productUrl" placeholder="Enter a URL for the Product" type="link" title="Enter a valid URL">
+
+                                <hr>
+                                <div>
+                                    <button type="submit" class="btn btn-outline-primary">Register</button>
+                                </div>
+                                <small class="text-muted">Details once registerd on the Blockchain are immutable. Ensure all fields are correct</small>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footerSnippet></footerSnippet>
+        <script src="js/registerProduct.js"></script>
+
+      </body>
+
+</html>

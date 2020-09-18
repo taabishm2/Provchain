@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippet.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("spinner").load("spinner.html");
+            });
+        </script>
+
+        <title>ProvChain | Home</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+        <link href="styles/home.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <headerSnippet></headerSnippet>
+        <div id="loadingOverlay" style="display:none">
+            <div id="loader-text" style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px;">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">You will be logged in based on your active Ethereum Account Address.<br/>Ensure the current account is selected in Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+
+        <main>
+            <div id="main-container">
+                <div id="profile-holder">
+                    <div id="welcome-header">Welcome, <span id="userName"></span></div>
+                    <div id="welcome-eth-address"></div>
+                    <div class="table table-sm">
+                        <table id="profile-details-table">
+                            <tr>
+                                <th>Account Type:</th>
+                                <td id="plaque-acc-type"></td>
+                            </tr>
+                            <tr>
+                                <th>Account Name:</th>
+                                <td id="plaque-acc-name"></td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td id="plaque-acc-email"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="text-muted console-info">
+                        From the Console you can interact with the Provchain Blockchain. Access levels are
+                        determined based on your registered account (identified by your logged in ETH Address)
+                    </div>
+                </div>
+
+                <div id="plaque-container">
+                    <div class="plaque-row">
+                        <div class="plaque-left">
+                            <i class="fa fa-qrcode plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="track.html">Scan Items</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Scan Products using their tags to generate Provenance Reports and Product Data
+                            </div>
+                        </div>
+                        <div class="plaque-right">
+                            <i class="fa fa-search plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="track.html">Search Products</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Locate Product by EPC and observe its history, transaction and other information
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plaque-row">
+                        <div class="plaque-left">
+                            <i class="fa fa-list-ul plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="productListing.html">View Product Listing</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                View all products you have created, received or interacted with in the past
+                            </div>
+                        </div>
+                        <div class="plaque-right">
+                            <i class="fa fa-users plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="profile.html">View User Profiles</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                View account details of registered users on Provchain through their Eth Addresses
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plaque-row">
+                        <div class="plaque-left" id="register-product-plaque">
+                            <i class="fa fa-plus-circle plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="registerProducts.html">Register Product</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Register a new product in your Supplychain by adding Product Information
+                            </div>
+                        </div>
+                        <div class="plaque-right" id="ship-product-plaque">
+                            <i class="fa fa-paper-plane plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="shipProducts.html">Ship/Receive Products</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Ship owned products to another account or receive a product shipped to you
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="plaque-container-small">
+                    <div class="row">
+                        <div class="col-md-12 sm-line-plaque">
+                            <i class="fa fa-qrcode plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="track.html">Scan Items</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Scan Products using their tags to generate Provenance Reports and Product Data
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 sm-line-plaque">
+                            <i class="fa fa-search plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="track.html">Search Products</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Locate Product by EPC and observe its history, transaction and other information
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 sm-line-plaque">
+                            <i class="fa fa-list-ul plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="productListing.html">View Product Listing</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                View all products you have created, received or interacted with in the past
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 sm-line-plaque">
+                            <i class="fa fa-users plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="profile.html">View User Profiles</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                View account details of registered users on Provchain through their Eth Addresses
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 sm-line-plaque">
+                            <i class="fa fa-plus-circle plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="registerProducts.html">Register Product</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Register a new product in your Supplychain by adding Product Information
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 sm-line-plaque">
+                            <i class="fa fa-paper-plane plaque-fa" aria-hidden="true"></i>
+                            <div class="plaque-cell-title">
+                                <a href="shipProducts.html">Ship/Receive Products</a>
+                            </div>
+                            <div class="plaque-cell-text">
+                                Ship owned products to another account or receive a product shipped to you
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footerSnippet></footerSnippet>
+        <script src="js/home.js"></script>
+
+      </body>
+
+</html>

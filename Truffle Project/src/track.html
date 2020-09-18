@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="js/truffle-contract.js"></script>
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippet.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("spinner").load("spinner.html");
+                $("snackbar").load("snackbar.html");
+                $("scanNfcButton").load("scanNfcButton.html")
+            });
+        </script>
+
+        <title>Track | Provchain</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <headerSnippet></headerSnippet>
+        <div id="loadingOverlay" style="display:none">
+            <div id="loader-text" style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px;">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">If prompted, please accept the transaction on Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+
+        <main>
+            <div>
+                <div class="row" style="width: 100%; margin:0">
+                    <div class="col-md-5 track-column">
+                        <div class="product-details-track table-sm">
+                            <table style="width:100%">
+                                <tr id="details-table-head">
+                                    <th>EPC</th>
+                                    <td id="tr-product-epc"></td>
+                                </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <td id="tr-product-name"></td>
+                                </tr>
+                                <tr>
+                                    <th>Owner</th>
+                                    <td id="tr-product-owner"></td>
+                                </tr>
+                                <tr>
+                                    <th>Manufacturer</th>
+                                    <td id="tr-product-producer"></td>
+                                </tr>
+                                <tr>
+                                    <th>Manufactured</th>
+                                    <td id="tr-product-manufactured"></td>
+                                </tr>
+                                <tr>
+                                    <th>Expiration</th>
+                                    <td id="tr-product-expiry"></td>
+                                </tr>
+                                <tr>
+                                    <th>MRP</th>
+                                    <td id="tr-product-mrp"></td>
+                                </tr>
+                                <tr>
+                                    <th>URL</th>
+                                    <td id="tr-product-url"></td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td id="tr-product-status"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="dynamic-group"> </div>
+                        <div style="display: none;">
+                        <div  class="tracking-card" id="track-card">
+                            <div class="tracking-card-header">
+                                <p class="tracking-card-title-left" id="eventName"></p>
+                                <p class="tracking-card-title-right">
+                                    <span class="badge badge-success" style="padding: 4px 8px 4px 8px;
+                                    margin:10px;">Confirmed</span>
+                                </p>
+                            </div>
+                            <div class="tracking-card-body" style="clear: both;">
+                                <div class="row">
+                                    <i class="fa fa-clock-o track-icons col-md-2" aria-hidden="true"></i>
+                                    <span class="col-md-10" id="timestamp"></span>
+                                </div>
+                                <div class="row">
+                                    <i class="fa fa-map-pin track-icons col-md-2" aria-hidden="true"></i>
+                                    <span class="col-md-10" id="txnAddress"></span>
+                                </div>
+                                <div class="row">
+                                    <i class="fa fa-address-book-o track-icons col-md-2" aria-hidden="true"></i>
+                                    <span class="col-md-10" id="sender"></span>
+                                </div>
+                                <div class="row">
+                                    <i class="fa fa-sign-in track-icons col-md-2" aria-hidden="true"></i>
+                                    <span class="col-md-10" id="recipient"></span>
+                                </div>
+                                <div class="row">
+                                    <i class="fa fa-sign-in track-icons col-md-2" aria-hidden="true"></i>
+                                    <span class="col-md-10" id="randNumber"></span>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7" id="tracking-map">
+                        <iframe id="map-frame" id="gmap_canvas" src="https://maps.google.com/maps?q=naseem%20bagh&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div id="product-searcher" style="width: 165px">
+                <button class="btn btn-primary ship-receive-button"
+                data-toggle="modal" data-target=".product-search-modal">
+                    Scan Items
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="modal fade bd-example-modal-lg product-search-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="Receive Product Form" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Scan a Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-md-9 form-page" style="box-shadow: none; width: 90%; height: auto;">
+                        <div class="form form-custom" style="width: 100%; margin-bottom: 0px;">
+                            <form class="form" id="product-search-form"  >
+
+                                <label for="searchEpcQuery">Product EPC</label>
+                                <input class="form-control" name="epc"
+                                id="searchEpcQuery" placeholder="Enter Product's EPC" required type="text">
+                                <hr>
+
+                                <div><p class="line-around-text text-muted"><span>OR</span></p></div>
+                                <scanNfcButton></scanNfcButton>
+                                <hr>
+
+                                <small class="text-muted">Product are identified by their EPC numbers assigned by their respective Manufacturers</small>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" onclick="App.searchProduct()" class="btn btn-primary modal-buttons" style="width: auto;" data-dismiss="modal">
+                        Search
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary modal-buttons" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </main>
+
+        <script src="bootstrap/js/popper.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/app.js"></script>
+        <script src="js/track.js"></script>
+
+      </body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blockchain Provenance for Supplychains">
+        <meta name="author" content="Tabish Mir(taabishm2@gmail.com), Raisa Arief(raisaarief31@gmail.com)">
+        <link rel="icon" href="assets/favicon.ico">
+
+        <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("headerSnippet").load("headerSnippet.html");
+                $("footerSnippet").load("footerSnippet.html");
+                $("spinner").load("spinner.html");
+                $("snackbar").load("snackbar.html");
+                $("scanNfcButton").load("scanNfcButton.html")
+            });
+        </script>
+
+        <title>Ship/Receive | Provchain</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="styles/styles.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <headerSnippet></headerSnippet>
+        <snackbar></snackbar>
+
+        <div id="loadingOverlay" style="display:none">
+            <div style="color: white; text-align: center; font-weight: bold; background-color: #8D0531;
+            border-radius: 10px; padding: 20px; padding-top:50px">
+                Processing Transaction<br/>
+                <span style="color: #cecece; font-weight: 200; font-size: 0.85em">If prompted, please accept the transaction on Metamask</span>
+                <spinner></spinner>
+            </div>
+        </div>
+
+        <main>
+            <div>
+                <div class="row" style="width: 90%; margin:auto;">
+                  <div class="column column-custom" >
+                    <i class="fa fa-sign-out fa-ship-receive" aria-hidden="true"></i>
+                    <div class="column-title">
+                        <button class="btn btn-primary ship-receive-button"
+                        data-toggle="modal" data-target=".ship-modal">Ship a Product</button>
+                    </div>
+                    <div class="column-body">
+                        Ship an Owned Product to a Recipient. Shipping a Product transfers ownership to the
+                        recipient along with all control of the product. Once shipped, the state may be changed
+                        only by the recipient
+                    </div>
+                  </div>
+
+                  <div id="column-separator">
+                  </div>
+
+                  <div class="column column-custom">
+                    <i class="fa fa-sign-in fa-ship-receive" aria-hidden="true"></i>
+                    <div class="column-title">
+                        <button class="btn btn-primary ship-receive-button"
+                        data-toggle="modal" data-target=".receive-modal">Receive a Product</button>
+                    </div>
+                    <div class="column-body">
+                        Receive a product Shipped to you by the previous owner. Reciept of the product makes
+                        you the current owner of the product. You may only receive products shipped to your
+                        Ethereum account address
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade bd-example-modal-lg ship-modal" id="ship-modal" tabindex="-1" role="dialog" aria-labelledby="Ship Product Form" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Ship a Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-md-9 form-page" style="box-shadow: none; width: 90%; height: auto;">
+                        <div class="form form-custom" style="width: 100%; margin-bottom: 0px;">
+                            <form class="form" onsubmit="App.shipProduct(); return false;" id="product-ship-form">
+
+                                <label for="epc">Product EPC</label>
+                                <input class="form-control" name="epc"
+                                id="epc" placeholder="Enter Product EPC" required pattern="[0-9]*" title="Must be Numeric">
+
+                                <label for="randomNumber">RandomNumber</label>
+                                <input class="form-control" name="randomNumber"
+                                id="randomNumber" placeholder="Enter Product Random Number" title="Must be Numeric">
+
+                                <label for="recipientEthAddress">Recepient ETH Address</label>
+                                <input class="form-control" name="recipientEthAddress"
+                                id="recipientEthAddress" placeholder="Enter ETH Address of Recipient" required type="text" title="Enter Valid Address">
+
+                                <div><p class="line-around-text text-muted"><span>OR</span></p></div>
+                                <scanNfcButton></scanNfcButton>
+                                <hr>
+
+                                <small class="text-muted">Details once registerd on the Blockchain are immutable. Ensure all fields are correct</small>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-primary modal-buttons" form="product-ship-form">Ship</button>
+                    <button type="button" class="btn btn-secondary modal-buttons" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade bd-example-modal-lg receive-modal" id="receive-modal" tabindex="-1" role="dialog" aria-labelledby="Receive Product Form" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Receive a Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-md-9 form-page" style="box-shadow: none; width: 90%; height: auto;">
+                        <div class="form form-custom" style="width: 100%; margin-bottom: 0px;">
+                            <form class="form" onsubmit="App.receiveProduct(); return false;" id="product-receive-form">
+
+                                <label for="epcRec">Product EPC</label>
+                                <input class="form-control" name="epcRec"
+                                id="epcRec" placeholder="Enter Product EPC" required pattern="[0-9]*" title="Must be Numeric">
+
+                                <label for="randomNumberRec">Random Number</label>
+                                <input class="form-control" name="randomNumberRec"
+                                id="randomNumberRec" placeholder="Enter Product Random Number" required pattern="[0-9]*" title="Must be Numeric">
+
+                                <div><p class="line-around-text text-muted"><span>OR</span></p></div>
+                                <scanNfcButton></scanNfcButton>
+                                <hr>
+
+                                <small class="text-muted">Details once registerd on the Blockchain are immutable. Ensure all fields are correct</small>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-primary modal-buttons" form="product-receive-form" style="width: auto">Receive</button>
+                    <button type="button" class="btn btn-secondary modal-buttons" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </main>
+
+        <footerSnippet></footerSnippet>
+        <script src="js/shipProduct.js"></script>
+
+      </body>
+
+</html>
