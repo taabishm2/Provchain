@@ -7,6 +7,7 @@ A blockchain based provenance platform for achieving transparency in supply chai
 
 Provchain establishes a provenance knowledge framework and uses it to enhance assurances and reduce perceived risks in product supplychains. The goal of Provchain is to implement a decentralized supply chain tracking platform which ensures end-to-end product tracing. This is done while incurring minimum costs of implementation as well causing no disruptions to the supply chains in which it is integrated.  
 
+![alt text](https://i.ibb.co/hfCdXV0/Screenshot-from-2021-10-14-08-17-38.png)
 
 ## Getting Started
 
