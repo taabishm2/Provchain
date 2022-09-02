@@ -1,8 +1,10 @@
 # Provchain
-A blockchain based provenance platform for achieving transparency in supply chains by revealing the journey of products through their lifetime
 
 Related Paper published in IJBC: 
+
 [Supply chain provenance with offline verification through a low-requirement, blockchain-based framework](https://www.inderscienceonline.com/doi/abs/10.1504/IJBC.2022.122988)
+
+A blockchain based provenance platform for achieving transparency in supply chains by revealing the journey of products through their lifetime
 
 ![alt text](https://i.ibb.co/m9WNZWW/DBB39863-48-BC-4-FE9-B940-D06591-B9-C3-D7.png)
 
